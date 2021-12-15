@@ -7,9 +7,13 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(secure_params)
     if @contact.valid?
+      logger.debug "******VALID EMAIL******"
+      UserMailer.contact_email(@contact).deliver_now
       flash[:notice] = "Message sent from #{@contact.name}"
       redirect_to root_path
     else
+      logger.debug "******INVALID EMAIL******"
+      flash[:notice] = "Invalid Message!"
       render :new
     end
   end

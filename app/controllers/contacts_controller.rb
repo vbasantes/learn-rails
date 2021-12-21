@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
 
+  ## Class to manage the contact page for sending email
   def new
     @contact = Contact.new
   end

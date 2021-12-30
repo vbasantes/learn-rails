@@ -17,6 +17,8 @@ class Visitor
       }
     )
 
+    # Need to add code to handle a failed add request as it currently just breaks
+    
     Rails.logger.info("Subscribed #{self.email} to MailChimp") if result
 
   end
